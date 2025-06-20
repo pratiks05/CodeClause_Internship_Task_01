@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chat App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <div class="login-content">
+                <h1><i class="fas fa-comments"></i> ChatFlow</h1>
+                <p class="login-subtitle">Connect with friends in real-time</p>
+                <form id="loginForm" class="login-form">
+                    <div class="input-group">
+                        <input type="text" id="usernameInput" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="roomInput" placeholder="Room name (default: General)" value="General">
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Join Chat
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chat Screen -->
+        <div id="chatScreen" class="chat-screen hidden">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="user-profile">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <h3 id="sidebarUsername">Username</h3>
+                            <div class="user-status">Online</div>
+                        </div>
+                    </div>
+                    <div class="room-search">
+                        <input type="text" id="roomSearchInput" placeholder="Search or create room...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="rooms-list" id="roomsList">
+                    <!-- Rooms will be populated here -->
+                </div>
+            </div>
+
+            <!-- Main Chat Area -->
+            <div class="chat-main">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <div class="chat-avatar" id="chatAvatar">G</div>
+                        <div class="chat-info">
+                            <h2 id="currentRoom">General</h2>
+                            <div class="chat-status">
+                                <div class="online-indicator"></div>
+                                <span id="userCount">0</span> members online
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" id="toggleSidebar">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <button class="action-btn" id="settingsBtn">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="messages-container" id="messagesContainer">
+                    <div id="messages"></div>
+                    <div id="typingIndicator" class="typing-indicator hidden">
+                        <span>Someone is typing</span>
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-input-container">
+                    <form id="messageForm" class="message-form">
+                        <button type="button" class="emoji-btn" id="emojiBtn">😊</button>
+                        <textarea id="messageInput" class="message-input" placeholder="Type a message..." rows="1"></textarea>
+                        <button type="submit" class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div id="emojiPicker" class="emoji-picker hidden">
+                        <!-- Emojis will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    
+</body>
+</html>
